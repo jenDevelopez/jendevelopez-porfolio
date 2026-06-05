@@ -15,7 +15,7 @@ export const skills: string[] = [
   "Git/GitHub",
 ];
 export const projects = [
-  {
+/*   {
     title: "Star Wars Starships",
     description:
       "Desarrollo de app de naves de Star Wars, con su informacion, pilotos y películas en la que aparecen",
@@ -23,13 +23,22 @@ export const projects = [
     githubLink: "https://github.com/jenDevelopez/star-wars/",
     image: "/projects-screenshots/star-wars.webp",
     skills: ["React", "TailwindCSS", "Firebase", "Zustand"],
-  },
+  }, */
+    {
+    title: "Pokedex",
+    description:
+      "Desarrollo de app de una pokedex con la informacion de cada pokemon",
+    link: "https://pokedex-develop.netlify.app/",
+    githubLink: "https://github.com/jenDevelopez/pokedex.git",
+    image: "/projects-screenshots/mockup-pokedex.png",
+    skills: ["React", "CSS3", "Typescript","Zustand"],
+  }, 
   {
     title: "Javascript quizz",
     description:
       "Desarrollo de aplicación de preguntas de javascript para princpiantes",
     image: "/projects-screenshots/js-quizz.webp",
-    link: "quizz-javascript-app.netlify.app",
+    link: "https://quizz-javascript-app.netlify.app/",
     githubLink: "https://github.com/jenDevelopez/javascript-quizz.git",
     skills: ["React", "Zustand", "TailwindCSS"],
   },
