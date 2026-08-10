@@ -1,0 +1,32 @@
+---
+/** Observa [data-reveal] y añade .is-visible al entrar en viewport. */
+---
+
+<script>
+	function initScrollReveal() {
+		const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
+		if (!elements.length) return;
+
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduceMotion) {
+			elements.forEach((el) => el.classList.add('is-visible'));
+			return;
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					entry.target.classList.add('is-visible');
+					observer.unobserve(entry.target);
+				});
+			},
+			{ root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
+		);
+
+		elements.forEach((el) => observer.observe(el));
+	}
+
+	initScrollReveal();
+	document.addEventListener('astro:page-load', initScrollReveal);
+</script>

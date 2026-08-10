@@ -1,44 +1,45 @@
 ---
-interface Props {
-  skills?: string[];
-}
-
-import { Image } from "astro:assets";
-import miFotoPerfil from "/assets/dev.png";
-
-const { skills = [] } = Astro.props as Props;
+import { about, site, skills } from '../data/site';
 ---
 
-<section
-  id="about"
-  
-  class="px-6 md:px-12 py-20 bg-[#FFC300] dark:bg-[#181818]"
->
-  <h2 class="text-3xl font-bold mb-8 text-center">Sobre mi</h2>
-  <div class="grid md:grid-cols-2 gap-12 items-center">
-    <img
-      src="/jendevelopez-porfolio/assets/dev.png"
-      alt="Profile"
-      class="rounded-2xl w-full max-w-sm mx-auto"
-    />
-    <div>
-      <p
-        class="text-gray-800 dark:text-gray-300 mb-6 text-sm md:text-base leading-relaxed"
-      >
-        Soy una desarrolladora FullStack que no solo construye código, sino que
-        también construye puentes entre la visión del cliente y la realidad
-        digital.
-      </p>
-      <h3 class="font-semibold mb-4">Tech Stack</h3>
-      <div class="flex flex-wrap gap-3 text-sm">
-        {
-          skills.map((skill) => (
-            <span class="px-3 py-1 bg-yellow-200 dark:bg-[#333] rounded-lg">
-              {skill}
-            </span>
-          ))
-        }
-      </div>
-    </div>
-  </div>
+<section id="about" class="scroll-mt-20 border-t border-border py-16 sm:py-20 lg:py-24">
+	<div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 lg:gap-16 lg:px-8">
+		<div class="overflow-hidden rounded-card shadow-card" data-reveal="left">
+			<img
+				src={about.image}
+				alt={`Retrato de ${site.fullName}`}
+				width="640"
+				height="800"
+				class="aspect-4/5 w-full object-cover"
+				loading="lazy"
+			/>
+		</div>
+		<div data-reveal="right" style="--reveal-delay: 100ms">
+			<p class="text-sm font-semibold uppercase tracking-widest text-primary">{site.fullName}</p>
+			<h2 class="mt-2 text-2xl font-extrabold tracking-tight text-text sm:text-3xl">
+				{about.title}
+			</h2>
+			{
+				about.paragraphs.map((p) => (
+					<p class="mt-5 text-base leading-relaxed text-muted sm:text-lg">{p}</p>
+				))
+			}
+			<h3 class="mt-8 text-sm font-bold uppercase tracking-wide text-text">Tech Stack</h3>
+			<ul class="mt-4 flex flex-wrap gap-2">
+				{
+					skills.map((skill) => (
+						<li class="rounded-full bg-primary-soft px-3 py-1.5 text-xs font-medium text-primary ring-1 ring-border">
+							{skill}
+						</li>
+					))
+				}
+			</ul>
+			<a
+				href="#contact"
+				class="mt-8 inline-flex items-center justify-center rounded-btn bg-primary px-6 py-3 text-sm font-bold text-white transition hover:bg-primary-hover"
+			>
+				Hablemos de tu proyecto
+			</a>
+		</div>
+	</div>
 </section>

@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { asset } from '../data/site';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Portfolio | Jennifer López',
+	description = 'Portfolio de Jennifer López — FullStack Developer. Proyectos web, apps y e-commerce.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href={asset('/favicon.svg')} />
+		<link rel="alternate icon" href={asset('/assets/jlopez.ico')} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+			rel="stylesheet"
+		/>
+		<script is:inline>
+			(function () {
+				try {
+					const stored = localStorage.getItem('theme');
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+					const dark = stored === 'dark' || (!stored && prefersDark);
+					document.documentElement.classList.toggle('dark', dark);
+				} catch (_) {}
+			})();
+		</script>
+	</head>
+	<body class="min-h-dvh bg-bg text-text antialiased">
+		<slot />
+	</body>
+</html>

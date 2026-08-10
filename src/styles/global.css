@@ -1,2 +1,119 @@
 @import "tailwindcss";
+
+:root {
+	--jl-bg: #eef2f7;
+	--jl-surface: #f4f7fb;
+	--jl-text: #1e293b;
+	--jl-muted: #64748b;
+	--jl-border: #d5dde8;
+	--jl-primary: #2563eb;
+	--jl-primary-hover: #1d4ed8;
+	--jl-primary-soft: #e0ebfa;
+	--jl-shadow-card: 0 4px 24px rgba(15, 23, 42, 0.06);
+	--jl-font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+	--jl-radius-card: 1rem;
+	--jl-radius-btn: 0.75rem;
+}
+
+.dark {
+	--jl-bg: #151b28;
+	--jl-surface: #1c2433;
+	--jl-text: #e8eef7;
+	--jl-muted: #94a3b8;
+	--jl-border: #2a3444;
+	--jl-primary: #3b82f6;
+	--jl-primary-hover: #2563eb;
+	--jl-primary-soft: #243447;
+	--jl-shadow-card: 0 4px 24px rgba(0, 0, 0, 0.28);
+}
+
+@theme inline {
+	--color-bg: var(--jl-bg);
+	--color-surface: var(--jl-surface);
+	--color-text: var(--jl-text);
+	--color-muted: var(--jl-muted);
+	--color-border: var(--jl-border);
+	--color-primary: var(--jl-primary);
+	--color-primary-hover: var(--jl-primary-hover);
+	--color-primary-soft: var(--jl-primary-soft);
+	--font-sans: var(--jl-font-sans);
+	--shadow-card: var(--jl-shadow-card);
+	--radius-card: var(--jl-radius-card);
+	--radius-btn: var(--jl-radius-btn);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--jl-font-sans);
+	background-color: var(--jl-bg);
+	color: var(--jl-text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background-color: var(--jl-primary);
+	color: white;
+}
+
+/* Scroll reveal */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(1.25rem);
+	transition:
+		opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+	transition-delay: var(--reveal-delay, 0ms);
+	will-change: opacity, transform;
+}
+
+[data-reveal='left'] {
+	transform: translateX(-1.25rem);
+}
+
+[data-reveal='right'] {
+	transform: translateX(1.25rem);
+}
+
+[data-reveal='scale'] {
+	transform: translateY(0.75rem) scale(0.97);
+}
+
+[data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+.hover-card.is-visible {
+	transition:
+		opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+		transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.2s ease,
+		box-shadow 0.35s ease;
+}
+
+.hover-card.is-visible:hover {
+	transform: scale(1.04);
+	box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.dark .hover-card.is-visible:hover {
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.hover-card.is-visible:hover {
+		transform: none;
+	}
+}

@@ -1,30 +1,75 @@
-<!--HERO -->
- <section
-    class="min-h-screen flex flex-col justify-center items-start px-6 md:px-12 pt-20 md:min-h-[75vh] md:items-center"
-  >
-    <p class="text-gray-950 text-shadow-2xs mb-2 animate-fade-in dark:text-white">Hola 👋</p>
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-slide-up">
-      Soy <span class="text-yellow-400">Jennifer López</span>
-    </h1>
-    <p
-      class="max-w-xl text-gray-800 dark:text-gray-300 mb-6 text-sm md:text-base"
-    >
-      FullStack Developer especializada en construir experiencias digitales que
-      conectan la visión del cliente con la realidad tecnológica.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4">
-      <a
-        href="#contact"
-        class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg shadow hover:bg-yellow-300 text-center"
-      >
-        Contáctame
-      </a>
-      <a
-        href="/cv_jennifer_lopez.pdf"
-       download="/cv_jennifer_lopez.pdf"
-        class="px-6 py-3 border border-gray-800 text-gray-800 hover:border-yellow-400 hover:bg-yellow-400 dark:border-yellow-400 dark:text-yellow-400 rounded-lg dark:hover:bg-yellow-400 dark:hover:text-black text-center"
-      >
-        Descargar CV
-      </a>
-    </div>
-  </section>
+---
+import { asset, site, trustSignals } from '../data/site';
+---
+
+<section id="top" class="relative overflow-hidden">
+	<div
+		class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--jl-primary-soft),transparent_55%)]"
+		aria-hidden="true"
+	></div>
+	<div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-24">
+		<div class="order-2 lg:order-1" data-reveal="left">
+			<p class="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+				{site.name} · {site.role}
+			</p>
+			<h1 class="text-3xl font-extrabold leading-tight tracking-tight text-text sm:text-4xl lg:text-5xl">
+				{site.tagline}
+			</h1>
+			<p class="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+				{site.description}
+			</p>
+			<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+				<a
+					href="#contact"
+					class="inline-flex items-center justify-center rounded-btn bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition hover:bg-primary-hover"
+				>
+					{site.ctaPrimary}
+				</a>
+				<a
+					href={site.cv}
+					download
+					class="inline-flex items-center justify-center rounded-btn border border-border bg-surface px-7 py-3.5 text-sm font-semibold text-text transition hover:border-primary hover:text-primary"
+				>
+					Descargar CV
+				</a>
+			</div>
+			<p class="mt-4 text-xs text-muted sm:text-sm">
+				Respuesta rápida · {site.location} · Disponible para proyectos
+			</p>
+		</div>
+
+		<div class="order-1 flex justify-center lg:order-2 lg:justify-end" data-reveal="right" style="--reveal-delay: 120ms">
+			<div class="relative w-full max-w-md lg:max-w-lg">
+				<div
+					class="absolute -inset-6 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20"
+					aria-hidden="true"
+				></div>
+				<img
+					src={asset('/images/hero-laptop.webp')}
+					alt="Mockup de laptop con diseño web profesional"
+					width="640"
+					height="480"
+					class="relative z-10 w-full drop-shadow-2xl"
+					fetchpriority="high"
+				/>
+			</div>
+		</div>
+	</div>
+
+	<div class="relative border-t border-border/70 bg-surface/60">
+		<ul class="mx-auto grid max-w-6xl grid-cols-1 divide-y divide-border px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-6 lg:px-8">
+			{
+				trustSignals.map((item, i) => (
+					<li
+						class="flex flex-col items-center gap-1 px-4 py-5 text-center sm:py-6"
+						data-reveal
+						style={`--reveal-delay: ${80 + i * 100}ms`}
+					>
+						<span class="text-xl font-extrabold text-primary sm:text-2xl">{item.value}</span>
+						<span class="text-sm text-muted">{item.label}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

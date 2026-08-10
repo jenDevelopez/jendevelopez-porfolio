@@ -1,0 +1,29 @@
+---
+import { offer } from '../data/site';
+---
+
+<section class="border-t border-border py-14 sm:py-16" aria-labelledby="offer-heading">
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+		<div class="relative overflow-hidden rounded-card bg-primary px-6 py-10 text-center text-white sm:px-10 sm:py-12" data-reveal="scale">
+			<div
+				class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,255,255,0.18),transparent_55%)]"
+				aria-hidden="true"
+			></div>
+			<div class="relative">
+				<h2 id="offer-heading" class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+					{offer.title}
+				</h2>
+				<p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
+					{offer.subtitle}
+				</p>
+				<a
+					href="#contact"
+					class="mt-8 inline-flex items-center justify-center rounded-btn bg-white px-7 py-3.5 text-sm font-bold text-primary transition hover:bg-white/90"
+				>
+					{offer.cta}
+				</a>
+				<p class="mt-4 text-xs text-white/75 sm:text-sm">{offer.note}</p>
+			</div>
+		</div>
+	</div>
+</section>

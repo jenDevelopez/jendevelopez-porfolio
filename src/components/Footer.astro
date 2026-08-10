@@ -1,9 +1,20 @@
-<footer class="px-6 md:px-12 py-6 bg-[#111] text-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-  <p class="text-sm">© {new Date().getFullYear()} Jendevelopez. Todos los derechos reservados.</p>
-  <div class="flex gap-4">
-    <a class="hover:text-yellow-400" href="https://github.com/jenDevelopez" target="_blank">GitHub</a>
-    <a class="hover:text-yellow-400" href="https://www.linkedin.com/in/jendevelopez" target="_blank">LinkedIn</a>
-  </div>
+---
+import { site } from '../data/site';
+---
+
+<footer class="border-t border-border pb-24 pt-8 md:pb-8">
+	<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:text-left sm:px-6 lg:px-8">
+		<div>
+			<p class="text-sm font-bold text-text">{site.name}</p>
+			<p class="mt-1 text-sm text-muted">
+				{site.fullName} · {site.role} · {site.location}
+			</p>
+		</div>
+		<p class="text-sm text-muted">
+			© {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
+		</p>
+		<a href={`mailto:${site.email}`} class="text-sm font-medium text-primary hover:text-primary-hover">
+			{site.email}
+		</a>
+	</div>
 </footer>
-
-
